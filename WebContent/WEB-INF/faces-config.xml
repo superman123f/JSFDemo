@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE faces-config PUBLIC
+"-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
+"http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
+
+<faces-config>
+	<navigation-rule><!-- 页面流程 -->
+		<from-view-id>/pages/*</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/pages/welcome.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/pages/index.jsp</to-view-id>
+		</navigation-case>
+		
+		<navigation-case><!-- 标准转换器 -->
+			<from-outcome>show</from-outcome>
+			<to-view-id>/pages/convert.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<managed-bean>
+		<managed-bean-name>card</managed-bean-name>
+		<managed-bean-class>com.gyh.Card</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>user</managed-bean-name>
+		<managed-bean-class>
+			com.gyh.UserBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		
+		<managed-property>
+			<property-name>card</property-name>
+			<value>#{card}</value>
+		</managed-property>
+	</managed-bean>
+</faces-config>
