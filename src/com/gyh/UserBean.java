@@ -50,7 +50,7 @@ public class UserBean {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	//	用户名、密码核实
+	//	楠岃瘉
 	public void verify(ActionEvent e) {
 		if(!name.equals("zhangsan") || !password.equals("123456")) {
 			errMessage = "userName or password is wrong:" + e.getSource();
