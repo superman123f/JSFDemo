@@ -17,5 +17,10 @@ public class UserManageServiceImpl implements IUserManageService{
 	public List<User> queryAllUsers() {
 		return new UserDao().queryAllUsers();
 	}
+
+	@Override
+	public boolean addUser(User user) {
+		return new UserDao().addUser(user);
+	}
 	
 }

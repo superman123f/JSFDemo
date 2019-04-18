@@ -2,15 +2,16 @@ package com.gyh.jsfdemo.servlet;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.faces.event.ActionEvent;
 
-import com.gyh.jsfdemo.pojo.Student;
 import com.gyh.jsfdemo.pojo.User;
 import com.gyh.jsfdemo.service.impl.UserManageServiceImpl;
 
 public class UserBean {
-	private String name;
+	private String userId;
+	private String username;
 	private String password;
 	private String errMessage;
 	private Card card;
@@ -19,12 +20,23 @@ public class UserBean {
 	private String image="/images/1.jpg";
 	private List<User> userList;
 	
-	
-	public String getName() {
-		return name;
+	public String getUserId() {
+		return userId;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getOutcome() {
+		return outcome;
+	}
+	public void setOutcome(String outcome) {
+		this.outcome = outcome;
 	}
 	public String getPassword() {
 		return password;
@@ -64,27 +76,22 @@ public class UserBean {
 		this.userList = userList;
 	}
 	
+	// verify
 	public void verify(ActionEvent e) {
-		String test = "123";
-		Student stu = new Student();
-		stu.setStuno("111");
-		stu.setName("student1");
-		if(!name.equals("zhangsan") || !password.equals("123456")) {
+		if(!username.equals("zhangsan") || !password.equals("123456")) {
 			errMessage = "userName or password is wrong:" + e.getSource();
 			outcome = "faliure";
 		} else {
 			outcome = "success";
 		}
-		Student stu1 = stu;
-		System.out.println("student's infos: " + stu1.getStuno() + " " + stu1.getName());
+		System.out.println("verifying...");
 	}
 	
-	//	µÇÂ¼
-//	@Test
+	// login
 	public void login(ActionEvent e) {
 		System.out.println("insert login servlet");
 		User user = new User();
-		user.setName(this.name);
+		user.setUsername(this.username);
 		user.setPassword(this.password);
 		int i = new UserManageServiceImpl().checkLogin(user);
 		if(i > 0) {
@@ -95,6 +102,33 @@ public class UserBean {
 			outcome = "faliure";
 		}
 	}
+	
+	// add new user	
+	public void addUser(ActionEvent e) {
+		System.out.println("add a new user...");
+		String userId =  UUID.randomUUID().toString().replaceAll("\\-", "");
+	
+		User user = new User();
+		user.setUserId(userId);
+		user.setUsername(this.username);
+		user.setPassword(this.password);
+		
+		boolean flag = new UserManageServiceImpl().addUser(user);
+		if(flag) {
+			errMessage = "add user success";
+		} else {
+			errMessage = "add user error";
+		}
+		outcome = "add";
+	}
+	
+	// clean data
+	public void cleanData() {
+		this.username = "";
+		this.password = "";
+	}
+	
+	// return view
 	public String outcome() {
 		return outcome;
 	}

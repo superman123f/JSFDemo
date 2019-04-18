@@ -14,13 +14,13 @@
 			<h:messages layout="table" style="color:red"/>
 			<h3>Please input your name</h3>
 			<h:outputText value="#{user.errMessage}"/><p>
-			name:<h:inputText value="#{user.name}" required="true"/><p>
+			name:<h:inputText value="#{user.username}" required="true"/><p>
 			password:
 				<h:inputSecret value="#{user.password}" required="true">
 					<f:validateLength minimum="6"/>
 				</h:inputSecret><p>
 				
-			<%-- display:<h:outputText value="#{user.name}, #{user.password}"/> --%><p>
+			<%-- display:<h:outputText value="#{user.username}, #{user.password}"/> --%><p>
 			idCard:<h:outputText value="#{user.card.cardNumber}" /><p>
 			<h:commandButton value="submit" actionListener="#{user.verify}" action="#{user.outcome}" /> <!-- 根据verify的结果导航页面 -->
 		</h:form>
@@ -28,10 +28,10 @@
 		
 		命令类标签：
 		命令按钮：
-		<h:commandButton style="width:100px;height:100px;" value="#{user.name}" image="#{user.image}" 
+		<h:commandButton style="width:100px;height:100px;" value="#{user.username}" image="#{user.image}" 
 		actionListener="#{user.verify}" action="#{user.outcome}"/><p>
 		命令链接：
-		<h:commandLink value="#{user.name}" actionListener="#{user.verify}"
+		<h:commandLink value="#{user.username}" actionListener="#{user.verify}"
 		action="#{user.outcome}"/>
 	</f:view>
 </body>

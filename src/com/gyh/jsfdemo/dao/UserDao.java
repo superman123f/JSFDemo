@@ -17,10 +17,9 @@ public class UserDao {
 	private ResultSet rs = null;
 	private String sql = "";
 	
+	// check login
 	public int checkLogin(User user) {
-//		PreparedStatement pst = null;
-//		ResultSet rs = null;
-		sql = "select count(1) from s_user where username = '" + user.getName() + "' and password = '" + user.getPassword()+"'";
+		sql = "select count(1) from s_user where username = '" + user.getUsername() + "' and password = '" + user.getPassword()+"'";
 		int i = 0;
 		
 		try {
@@ -34,7 +33,6 @@ public class UserDao {
 			
 			JdbcUtil.close(rs, pst, conn);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return i;
@@ -42,7 +40,7 @@ public class UserDao {
 	
 	// query all users
 	public List<User> queryAllUsers() {
-		sql = "select username, password from s_user";
+		sql = "select userid, username, password from s_user";
 		List<User> userList = new ArrayList<User>();
 		
 		try {
@@ -53,15 +51,31 @@ public class UserDao {
 			
 			while(rs.next()) {
 				user = new User();
-				user.setName(rs.getString("username"));
+				user.setUserId(rs.getString("userid"));
+				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
 				
 				userList.add(user);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		return userList;
+	}
+	
+	// add user
+	public boolean addUser(User user) {
+		sql = "insert into s_user(userid, username, password) values('" + user.getUserId()+ "', '" + user.getUsername()+ "', '" + user.getPassword()+ "')";
+		boolean flag = false;
+		try {
+			conn = JdbcUtil.getConnection();
+			pst = conn.prepareStatement(sql);
+			flag = pst.execute();
+			
+			JdbcUtil.close(null, pst, conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return flag;
 	}
 }

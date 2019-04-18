@@ -11,14 +11,14 @@
 	<f:view>
 		<h:form>
 		    <h:outputText value="#{user.errMessage}" style="color:red;"/>
-			name:<h:inputText value="#{user.name}" required="true"/><p>
+			name:<h:inputText value="#{user.username}" required="true"/><p>
 			password：<h:inputSecret value="#{user.password}"/><p>
 			
 			<h:commandButton value="submit" actionListener="#{user.login}" action="#{user.outcome}" />
 		</h:form>
 		<%-- <h:commandButton value="login" actionListener="#{user.login}" action="#{user.outcome}"/>
 	
-		<h:commandButton style="width:100px;height:100px;" value="#{user.name}" image="#{user.image}" 
+		<h:commandButton style="width:100px;height:100px;" value="#{user.username}" image="#{user.image}" 
 		actionListener="#{user.verify}" action="#{user.outcome}"/><p> --%>
 	</f:view>
 </body>

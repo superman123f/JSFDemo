@@ -29,7 +29,6 @@ public class ConnectTest {
 			
 			JdbcUtil.close(result, pst, conn);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

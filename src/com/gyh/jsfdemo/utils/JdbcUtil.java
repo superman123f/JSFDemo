@@ -9,8 +9,9 @@ import java.sql.SQLException;
 public class JdbcUtil {
 	
 	private static Connection conn = null;
-	private static String url = "jdbc:oracle:thin:@127.0.0.1:1521:ORCL";
-	private static String username = "scott";
+//	private static String url = "jdbc:oracle:thin:@127.0.0.1:1521:ORCL";
+	private static String url = "jdbc:oracle:thin:@127.0.0.1:1522:TEST";
+	private static String username = "jsf";
 	private static String password = "oracle";
 	
 	public static Connection getConnection() {
@@ -18,7 +19,6 @@ public class JdbcUtil {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, username, password);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return conn;
@@ -39,7 +39,6 @@ public class JdbcUtil {
 				conn = null;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

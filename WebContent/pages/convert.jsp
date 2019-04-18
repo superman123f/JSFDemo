@@ -9,7 +9,7 @@
 </head>
 <body>
 	<f:view>
-		欢迎，<h:outputText value="#{user.name}" style="color:red;"/> &nbsp;&nbsp;用户
+		欢迎，<h:outputText value="#{user.username}" style="color:red;"/> &nbsp;&nbsp;用户
 		<b>
 			日期格式：
 			<h:outputText value="#{user.createTime}">
