@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
-<%@taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
+<%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
+<%@page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,8 +8,18 @@
 <title>user's login page</title>
 </head>
 <body>
-	用户名：<h:inputText value="#{user.username}"/>
-	密码：<h:inputSecret value="#{user.password}"/>
-	<h:commandButton value="login" action="#{user.login}"/>
+	<f:view>
+		<h:form>
+		    <h:outputText value="#{user.errMessage}" style="color:red;"/>
+			name:<h:inputText value="#{user.name}" required="true"/><p>
+			password：<h:inputSecret value="#{user.password}"/><p>
+			
+			<h:commandButton value="submit" actionListener="#{user.login}" action="#{user.outcome}" />
+		</h:form>
+		<%-- <h:commandButton value="login" actionListener="#{user.login}" action="#{user.outcome}"/>
+	
+		<h:commandButton style="width:100px;height:100px;" value="#{user.name}" image="#{user.image}" 
+		actionListener="#{user.verify}" action="#{user.outcome}"/><p> --%>
+	</f:view>
 </body>
-</html>
+</html> 	

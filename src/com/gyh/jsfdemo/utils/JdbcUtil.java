@@ -28,12 +28,15 @@ public class JdbcUtil {
 		try {
 			if(result != null) {
 				result.close();
+				result = null;
 			}
 			if(pst != null) {
 				pst.close();
+				pst = null;
 			}
 			if(conn != null) {
 				conn.close();
+				conn = null;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

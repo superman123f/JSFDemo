@@ -1,20 +1,21 @@
 package com.gyh.jsfdemo.service.impl;
 
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.util.List;
 
+import com.gyh.jsfdemo.dao.UserDao;
+import com.gyh.jsfdemo.pojo.User;
 import com.gyh.jsfdemo.service.IUserManageService;
-import com.gyh.jsfdemo.utils.JdbcUtil;
 
 public class UserManageServiceImpl implements IUserManageService{
 
 	@Override
-	public int login() {
-		Statement stm = null;
-		ResultSet rs = null;
-		String sql = "select ";
-		JdbcUtil.getConnection();
-		return 0;
+	public int checkLogin(User user) {
+		return new UserDao().checkLogin(user);
+	}
+
+	@Override
+	public List<User> queryAllUsers() {
+		return new UserDao().queryAllUsers();
 	}
 	
 }

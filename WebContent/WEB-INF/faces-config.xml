@@ -5,7 +5,7 @@
 
 <faces-config>
 	<navigation-rule><!-- 页面流程 -->
-		<from-view-id>/pages/*</from-view-id>
+		<from-view-id>/pages/index.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>success</from-outcome>
 			<to-view-id>/pages/welcome.jsp</to-view-id>
@@ -26,9 +26,17 @@
 		<navigation-case>
 			<from-outcome>success</from-outcome>
 			<to-view-id>/pages/userAdmin.jsp</to-view-id>
-		</navigation-case>
+		</navigation-case>					
 		<navigation-case>
 			<from-outcome>failure</from-outcome>
+			<to-view-id>/pages/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/userAdmin.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>exit</from-outcome>
 			<to-view-id>/pages/login.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
