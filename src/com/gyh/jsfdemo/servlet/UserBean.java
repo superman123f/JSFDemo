@@ -1,4 +1,4 @@
-package com.gyh;
+package com.gyh.jsfdemo.servlet;
 
 import java.util.Date;
 
@@ -58,6 +58,9 @@ public class UserBean {
 		} else {
 			outcome = "success";
 		}
+	}
+	public void login() {
+		
 	}
 	public String outcome() {
 		return outcome;

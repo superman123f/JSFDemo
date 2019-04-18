@@ -1,4 +1,4 @@
-package com.gyh;
+package com.gyh.jsfdemo.servlet;
 
 public class Card {
 	private String cardNumber="1029238555555";

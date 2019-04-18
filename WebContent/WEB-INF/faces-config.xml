@@ -20,17 +20,29 @@
 			<to-view-id>/pages/convert.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/login.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/pages/userAdmin.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/pages/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 	<managed-bean>
 		<managed-bean-name>card</managed-bean-name>
-		<managed-bean-class>com.gyh.Card</managed-bean-class>
+		<managed-bean-class>com.gyh.jsfdemo.servlet.Card</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	
 	<managed-bean>
 		<managed-bean-name>user</managed-bean-name>
 		<managed-bean-class>
-			com.gyh.UserBean
+			com.gyh.jsfdemo.servlet.UserBean
 		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 		
