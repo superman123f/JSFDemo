@@ -4,6 +4,16 @@
 "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
 
 <faces-config>
+	<render-kit>
+		<renderer>
+			<component-family>javax.faces.Output</component-family>
+			<renderer-type>qiujy.Pager</renderer-type>
+			<renderer-class>
+				com.qiujy.components.PagerRenderer
+			</renderer-class>
+		</renderer>
+	</render-kit>
+	
 	<navigation-rule><!-- 页面流程 -->
 		<from-view-id>/pages/index.jsp</from-view-id>
 		<navigation-case>
@@ -21,6 +31,7 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	<!-- login -->
 	<navigation-rule>
 		<from-view-id>/pages/login.jsp</from-view-id>
 		<navigation-case>
@@ -33,14 +44,28 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	<!-- userAdmin -->
 	<navigation-rule>
 		<from-view-id>/pages/userAdmin.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>add</from-outcome>
+			<to-view-id>/pages/addUser.jsp</to-view-id>
+		</navigation-case>
 		<navigation-case>
 			<from-outcome>exit</from-outcome>
 			<to-view-id>/pages/login.jsp</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/pages/userAdmin.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toEditPage</from-outcome>
+			<to-view-id>/pages/editUser.jsp</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
+	<!-- addUser -->
 	<navigation-rule>
 		<from-view-id>/pages/addUser.jsp</from-view-id>
 		<navigation-case>
@@ -49,6 +74,14 @@
 		</navigation-case>
 	</navigation-rule>
 
+	<!-- editUser -->
+	<navigation-rule>
+		<from-view-id>/pages/editUser.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>update</from-outcome>
+			<to-view-id>/pages/userAdmin.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	<managed-bean>
 		<managed-bean-name>card</managed-bean-name>
 		<managed-bean-class>com.gyh.jsfdemo.servlet.Card</managed-bean-class>

@@ -9,9 +9,10 @@ import java.sql.SQLException;
 public class JdbcUtil {
 	
 	private static Connection conn = null;
-//	private static String url = "jdbc:oracle:thin:@127.0.0.1:1521:ORCL";
-	private static String url = "jdbc:oracle:thin:@127.0.0.1:1522:TEST";
-	private static String username = "jsf";
+	private static String url = "jdbc:oracle:thin:@127.0.0.1:1521:ORCL";
+	private static String username = "scott";
+//	private static String url = "jdbc:oracle:thin:@127.0.0.1:1522:TEST";
+//	private static String username = "jsf";
 	private static String password = "oracle";
 	
 	public static Connection getConnection() {

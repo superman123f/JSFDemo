@@ -9,11 +9,15 @@
 </head>
 <body>
 	<f:view>
+		<h:outputText value="Login Page" style="font-size:20px;"/>
+		<h:messages layout="table" style="color:red;"/>
 		<h:form>
-		    <h:outputText value="#{user.errMessage}" style="color:red;"/>
-			name:<h:inputText value="#{user.username}" required="true"/><p>
-			password：<h:inputSecret value="#{user.password}"/><p>
-			
+		    <h:outputText value="#{user.errMessage}" style="color:red;"/><p>
+			username:<h:inputText value="#{user.username}" required="true"/><p>
+			password:<h:inputSecret value="#{user.password}" required="true">
+						<f:validateLength minimum="6"/>
+					 </h:inputSecret><p>
+					 
 			<h:commandButton value="submit" actionListener="#{user.login}" action="#{user.outcome}" />
 		</h:form>
 		<%-- <h:commandButton value="login" actionListener="#{user.login}" action="#{user.outcome}"/>

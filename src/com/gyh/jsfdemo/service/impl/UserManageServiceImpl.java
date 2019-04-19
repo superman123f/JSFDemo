@@ -22,5 +22,20 @@ public class UserManageServiceImpl implements IUserManageService{
 	public boolean addUser(User user) {
 		return new UserDao().addUser(user);
 	}
+
+	@Override
+	public boolean deleteUser(String userId) {
+		return new UserDao().deleteUser(userId);
+	}
+
+	@Override
+	public boolean updateUser(User user) {
+		return new UserDao().updateUser(user);
+	}
+
+	@Override
+	public User findUserByUserId(String userId) {
+		return new UserDao().findUserByUserId(userId);
+	}
 	
 }

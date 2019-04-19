@@ -1,9 +1,12 @@
 package com.gyh.jsfdemo.pojo;
 
+import java.sql.Timestamp;
+
 public class User {
 	private String userId;
 	private String username;
 	private String password;
+	private Timestamp createTime;
 	
 	
 	public String getUserId() {
@@ -24,5 +27,11 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+	public Timestamp getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(Timestamp timestamp) {
+		this.createTime = timestamp;
+	}
+		
 }

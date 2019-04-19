@@ -9,9 +9,8 @@
 <body>
 	<f:view>
 		<h:form>
-			<h:outputText value="#{user.errMessage}"/>
 			username:<h:inputText value="#{user.username}"/>
-			password:<h:inputText value="#{user.password}"/>
+			password:<h:inputSecret value="#{user.password}"/>
 			<h:commandButton value="add" actionListener="#{user.addUser}" action="#{user.outcome}"/>
 		</h:form>
 	</f:view>

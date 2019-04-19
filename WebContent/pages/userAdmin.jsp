@@ -1,48 +1,96 @@
+<%@page contentType="text/html; charset=UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
 <%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
-<%@page contentType="text/html; charset=UTF-8" %>
+
+
+<%@ taglib uri="http://www.qiujy.com/pager" prefix="q"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>Insert title here</title>
 </head>
+<style>
+	.orders {
+	  border: thin solid black;
+	}
+	
+	.ordersHeader {
+      width: 200px;
+	  text-align: center;
+	  //font-style: italic;
+	  color: Snow;
+	  background: Teal;
+	}
+	
+	.evenColumn {
+	  height: 25px;
+	  text-align: center;
+	  background: MediumTurquoise;
+	}
+	
+	.oddColumn {
+	  text-align: center;
+	  background: PowderBlue;
+	}
+</style>
 <body>
-login success.
 <f:view>
+	<div style="margin:10px 0px;">
+   		<h:outputText value="UserAdmin Page" style="font-size:19px"/>
+   	</div>
 	<h:form>
-		<h:dataTable value="#{user.userList}" var="user">
+		<h:dataTable  value="#{user.userList}" var="userInfo"
+	 		styleClass="orders"
+	        headerClass="ordersHeader"
+	        rowClasses="evenColumn,oddColumn">
+
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="userName" />
 				</f:facet>
-				<h:outputText value="#{user.username}"/>
+				<h:outputText value="#{userInfo.username}"/>
 			</h:column>
+			
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="password"/>
 				</f:facet>
-				<h:outputText value="#{user.password}"/>
+				<h:outputText value="#{userInfo.password}"/>
 			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="createTime"/>
+				</f:facet>
+				<h:outputText value="#{userInfo.createTime}">
+					<f:convertDateTime pattern="yyyy/MM/dd hh:mm:ss"/>
+				</h:outputText>
+			</h:column>
+			
 			<h:column>
 				<f:facet name="header">
 					<h:outputText>操作</h:outputText>
 				</f:facet>
-				<h:commandLink value="删除" action="#{user.delete}">
-					<f:param name="userId" value="#{user.userId}"/>
+				
+				<h:commandLink value="删除" action="#{user.deleteUser}">
+					<f:param name="userId" value="#{userInfo.userId}"/>
+				</h:commandLink> &nbsp;
+				
+				<h:commandLink action="#{user.findUserByUserId}">
+				   <h:outputText value="修改"/>
+				   <f:param name="userId" value="#{userInfo.userId}"/>
 				</h:commandLink>
-				<h:outputLink value="/JSFDemo/pages/editUser.faces">
-					<h:outputText>修改</h:outputText>
-					<f:param name="userId" value="#{user.userId}"/>
-				</h:outputLink>
+				
 			</h:column>
 		</h:dataTable>
 		
-		<h:commandButton value="exit" action="exit"/>
+		<h:commandButton value="add" action="#{user.cleanData}"/>
+		<h:commandButton value="exit" action="#{user.exit}"/>
+		<q:pager id="myPager" for="dt" showPages="5"
+					currPageClass="currPage" pageIndexClass="pagerPage" />
 		
 	</h:form>
-	<h:outputLink value="/JSFDemo/pages/addUser.faces">
-		<h:commandButton value="add" action="#{user.cleanData}"/>
-	</h:outputLink>
 	
 </f:view>
 </body>

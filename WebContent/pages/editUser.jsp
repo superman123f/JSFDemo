@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<f:view>
+		<h:form>
+			username:<h:inputText value="#{user.username}"/>
+			password:<h:inputText value="#{user.password}"/>
+			<h:commandButton value="save" action="#{user.updateUser}"/>
+		</h:form>
+	</f:view>
 </body>
 </html>
